@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173c2f" />
+    <meta name="description" content="AgroMind AI — a smart-farming software prototype with simulated field data and crop-scan demos." />
+    <title>AgroMind AI — Farm dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#overview" aria-label="AgroMind AI home" data-nav="overview">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 32.5c-7.2 0-12-5.1-12-12.2C8 12.1 16.8 7 31.9 7.4c.4 14.3-4.1 25.1-11.9 25.1Z"/><path d="M12.4 29.1c4.1-6.1 8.9-10.4 16.2-15"/></svg></span>
+          <span class="brand-copy"><strong>AgroMind</strong><small>FARM INTELLIGENCE</small></span>
+        </a>
+        <div class="sidebar-label">WORKSPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-nav="overview"><span class="nav-icon">⌂</span><span>Overview</span></button>
+          <button class="nav-item" data-nav="fields"><span class="nav-icon">▦</span><span>My fields</span><span class="nav-count">3</span></button>
+          <button class="nav-item" data-nav="scanner"><span class="nav-icon">◉</span><span>Crop scanner</span><span class="nav-new">DEMO</span></button>
+          <button class="nav-item" data-nav="weather"><span class="nav-icon">☼</span><span>Weather</span></button>
+        </nav>
+        <div class="sidebar-label sidebar-label-spaced">INSIGHTS</div>
+        <nav class="main-nav" aria-label="Farm insights">
+          <button class="nav-item" data-nav="roadmap"><span class="nav-icon">✳</span><span>Roadmap</span></button>
+        </nav>
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-note">
+          <div class="note-icon">i</div>
+          <div><strong>Prototype mode</strong><p>All field readings are sample data, not live sensor connections.</p></div>
+        </div>
+        <button class="profile-button" id="profileButton">
+          <span class="avatar">F</span><span class="profile-copy"><strong>Farm demo</strong><small>Sample workspace</small></span><span class="profile-more">···</span>
+        </button>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation"><span></span><span></span><span></span></button>
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumbTitle">Overview</strong></div>
+          <div class="topbar-actions">
+            <div class="demo-chip"><span class="pulse-dot"></span> DEMO DATA</div>
+            <button class="icon-button notification-button" id="notificationButton" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span class="notification-dot"></span></button>
+            <div class="top-avatar" aria-label="Farm demo profile">F</div>
+          </div>
+        </header>
+
+        <section class="view active" id="view-overview" data-view="overview">
+          <div class="welcome-row">
+            <div><div class="eyebrow"><span class="eyebrow-line"></span> THURSDAY, OCTOBER 22</div><h1>Your farm, <em>in focus.</em></h1><p class="page-subtitle">Here’s what’s happening across your fields today.</p></div>
+            <button class="button button-primary" data-action="open-scanner"><span class="button-spark">✳</span> Scan a crop <span class="arrow">↗</span></button>
+          </div>
+
+          <div class="demo-banner"><span class="banner-icon">i</span><span><strong>Prototype preview</strong> &nbsp;Readings and recommendations on this page are simulated for demonstration.</span><button class="banner-close" aria-label="Dismiss prototype notice">×</button></div>
+
+          <div class="metric-grid">
+            <article class="metric-card metric-highlight"><div class="metric-top"><span class="metric-label">FARM HEALTH</span><span class="metric-icon health-icon">✳</span></div><div class="metric-value">84<span class="metric-unit">/100</span></div><div class="metric-bottom"><span class="status-pill status-good"><span class="status-dot"></span> Looking steady</span><span class="metric-footnote">simulated</span></div><div class="health-meter"><span style="width:84%"></span></div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-label">SOIL MOISTURE</span><span class="metric-icon water-icon">⌁</span></div><div class="metric-value">38<span class="metric-unit">%</span></div><div class="metric-bottom"><span class="metric-context">Across 3 sample fields</span><span class="metric-mini-tag">DEMO</span></div><div class="mini-chart moisture-chart"><svg viewBox="0 0 180 38" preserveAspectRatio="none"><path d="M0 28 C15 26 19 15 34 18 S53 31 70 25 S91 8 108 14 S130 27 145 18 S164 12 180 5"/><path class="chart-fill" d="M0 28 C15 26 19 15 34 18 S53 31 70 25 S91 8 108 14 S130 27 145 18 S164 12 180 5 L180 38 L0 38Z"/></svg></div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-label">ACTIVE FIELDS</span><span class="metric-icon field-icon">⌖</span></div><div class="metric-value">03<span class="metric-unit"> fields</span></div><div class="metric-bottom"><span class="metric-context">5.8 acres in sample view</span><span class="metric-mini-tag">DEMO</span></div><div class="field-stacks"><span></span><span></span><span></span></div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-label">PRIORITY ALERTS</span><span class="metric-icon alert-icon">!</span></div><div class="metric-value">02<span class="metric-unit"> to review</span></div><div class="metric-bottom"><span class="metric-context">One field needs a check-in</span><button class="text-button" data-nav="overview">View alerts <span>→</span></button></div><div class="alert-progress"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></article>
+          </div>
+
+          <div class="content-grid overview-grid">
+            <section class="panel field-panel">
+              <div class="panel-heading"><div><div class="section-kicker">FIELD SNAPSHOT <span class="tiny-demo">SIMULATED</span></div><h2>Growing areas</h2></div><button class="text-button" data-nav="fields">All fields <span>→</span></button></div>
+              <div class="field-list">
+                <button class="field-row" data-field="North Plot"><span class="crop-thumb crop-corn"><span class="crop-sun">☼</span></span><span class="field-main"><strong>North Plot</strong><small>Sweet corn · Mid growth</small></span><span class="field-health"><span class="health-number">92</span><span class="health-bar"><i style="width:92%"></i></span></span><span class="field-condition condition-good">Good</span><span class="row-chevron">›</span></button>
+                <button class="field-row" data-field="River Bend"><span class="crop-thumb crop-soy"><span class="crop-leaf">✳</span></span><span class="field-main"><strong>River Bend</strong><small>Soybean · Flowering</small></span><span class="field-health"><span class="health-number">76</span><span class="health-bar"><i style="width:76%"></i></span></span><span class="field-condition condition-watch">Watch</span><span class="row-chevron">›</span></button>
+                <button class="field-row" data-field="Orchard Edge"><span class="crop-thumb crop-tomato"><span class="crop-leaf">✳</span></span><span class="field-main"><strong>Orchard Edge</strong><small>Tomato · Fruit setting</small></span><span class="field-health"><span class="health-number">83</span><span class="health-bar"><i style="width:83%"></i></span></span><span class="field-condition condition-good">Good</span><span class="row-chevron">›</span></button>
+              </div>
+              <div class="panel-footnote"><span class="tiny-circle">i</span> Field health scores are illustrative demo values, not measured agronomic assessments.</div>
+            </section>
+
+            <section class="panel weather-panel">
+              <div class="panel-heading"><div><div class="section-kicker">LOCAL CONDITIONS <span class="tiny-demo">SAMPLE</span></div><h2>Weather outlook</h2></div><span class="weather-location">⌖ &nbsp;Demo location</span></div>
+              <div class="weather-now"><div class="weather-temp">28<span>°</span></div><div class="weather-description"><strong>Partly sunny</strong><small>Feels like 30° · Sample forecast</small></div><div class="sun-cloud" aria-hidden="true"><span class="sun-disc"></span><span class="cloud-shape"></span></div></div>
+              <div class="weather-stats"><div><span>HUMIDITY</span><strong>62%</strong><small>simulated</small></div><div><span>WIND</span><strong>11 <i>km/h</i></strong><small>simulated</small></div><div><span>RAIN CHANCE</span><strong>20%</strong><small>simulated</small></div></div>
+              <div class="weather-note"><span class="weather-note-icon">☼</span><span><strong>Good window for field checks.</strong><small>Forecast values are placeholders for this demo.</small></span></div>
+              <button class="weather-link" data-nav="weather">See 5-day outlook <span>→</span></button>
+            </section>
+          </div>
+
+          <div class="content-grid lower-grid">
+            <section class="panel chart-panel">
+              <div class="panel-heading"><div><div class="section-kicker">SOIL MONITORING <span class="tiny-demo">SIMULATED</span></div><h2>Moisture trend</h2></div><div class="chart-controls"><span class="chart-unit">%</span><button class="range-button active" data-range="7">7 days</button><button class="range-button" data-range="30">30 days</button></div></div>
+              <div class="chart-legend"><span><i class="legend-dot legend-green"></i> North Plot</span><span><i class="legend-dot legend-gold"></i> River Bend</span><span class="chart-helper">Sample readings · not connected to sensors</span></div>
+              <div class="chart-wrap"><div class="y-labels"><span>60%</span><span>45%</span><span>30%</span><span>15%</span></div><svg class="trend-chart" viewBox="0 0 700 190" preserveAspectRatio="none" role="img" aria-label="Illustrative soil moisture trend chart"><defs><linearGradient id="greenFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3e9a6b" stop-opacity=".16"/><stop offset="1" stop-color="#3e9a6b" stop-opacity="0"/></linearGradient></defs><path class="gridline" d="M0 18H700 M0 68H700 M0 118H700 M0 168H700"/><path class="line-fill" d="M0 90 C42 80 60 108 100 97 S160 71 200 80 S250 103 300 88 S360 56 400 68 S460 88 500 72 S560 62 600 70 S660 42 700 48 L700 185 L0 185Z"/><path class="line-green" d="M0 90 C42 80 60 108 100 97 S160 71 200 80 S250 103 300 88 S360 56 400 68 S460 88 500 72 S560 62 600 70 S660 42 700 48"/><path class="line-gold" d="M0 128 C50 121 65 135 100 124 S160 116 200 122 S250 140 300 126 S360 110 400 118 S460 128 500 115 S560 126 600 110 S660 118 700 100"/><circle class="line-point green-point" cx="700" cy="48" r="4"/><circle class="line-point gold-point" cx="700" cy="100" r="4"/></svg></div>
+              <div class="x-labels"><span>Oct 16</span><span>Oct 17</span><span>Oct 18</span><span>Oct 19</span><span>Oct 20</span><span>Oct 21</span><span>Today</span></div>
+            </section>
+            <section class="panel alerts-panel" id="alertsPanel">
+              <div class="panel-heading"><div><div class="section-kicker">WHAT NEEDS ATTENTION</div><h2>Field notes <span class="heading-badge" id="alertCount">2</span></h2></div><button class="icon-button quiet-button" id="alertMenu" aria-label="Alert options">···</button></div>
+              <div class="alert-list">
+                <article class="alert-row" data-alert="water"><span class="alert-marker marker-amber">⌁</span><div class="alert-copy"><div class="alert-titleline"><strong>Moisture dipping</strong><span class="severity severity-medium">CHECK</span></div><p>River Bend is under its demo comfort range.</p><small>Sample signal · 24 min ago</small><div class="action-suggestion"><strong>Suggested action</strong><span>Check the soil before your next irrigation.</span></div></div><button class="resolve-alert" aria-label="Mark moisture alert reviewed">✓</button></article>
+                <article class="alert-row" data-alert="crop"><span class="alert-marker marker-green">✳</span><div class="alert-copy"><div class="alert-titleline"><strong>Scan a new leaf</strong><span class="severity severity-low">REMINDER</span></div><p>Capture a close-up to try the crop-scan demo.</p><small>Prototype suggestion · today</small><button class="inline-action" data-action="open-scanner">Open crop scanner <span>→</span></button></div><button class="resolve-alert" aria-label="Mark scan reminder done">✓</button></article>
+              </div>
+              <div class="alerts-disclaimer"><span>i</span> Demo alerts are generated from sample values.</div>
+            </section>
+          </div>
+          <footer class="page-footer"><span>AgroMind AI <i>·</i> Hackathon software prototype</span><span>Simulated data only <i>·</i> No live sensors connected</span></footer>
+        </section>
+
+        <section class="view" id="view-fields" data-view="fields">
+          <div class="welcome-row compact-welcome"><div><div class="eyebrow"><span class="eyebrow-line"></span> FIELD MANAGEMENT</div><h1>Your <em>growing areas.</em></h1><p class="page-subtitle">A sample view of crop status across three demo fields.</p></div><span class="outline-chip"><span class="pulse-dot"></span> SIMULATED FIELD DATA</span></div>
+          <div class="demo-banner"><span class="banner-icon">i</span><span><strong>Sample fields only</strong> &nbsp;These crop values are illustrative and are not supplied by physical devices.</span></div>
+          <div class="field-cards" id="fieldCards">
+            <article class="field-detail-card"><div class="field-card-art art-north"><span class="art-tag">FIELD 01</span><span class="art-sun">☼</span><div class="art-crop-row"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="field-card-body"><div class="field-card-head"><div><span class="field-card-label">NORTH PLOT · 2.4 ACRES</span><h2>Sweet corn</h2></div><span class="field-condition condition-good">Good</span></div><div class="growth-track"><span>Growth stage</span><strong>Mid growth</strong><div class="growth-bar"><i style="width:58%"></i></div></div><div class="field-facts"><div><span>Soil moisture</span><strong>46% <small>demo</small></strong></div><div><span>Soil pH</span><strong>6.4 <small>demo</small></strong></div><div><span>Field health</span><strong>92 / 100</strong></div></div><button class="field-card-action" data-action="field-detail" data-name="North Plot">View field notes <span>→</span></button></div></article>
+            <article class="field-detail-card"><div class="field-card-art art-river"><span class="art-tag">FIELD 02</span><span class="art-sun">☼</span><div class="art-crop-row"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="field-card-body"><div class="field-card-head"><div><span class="field-card-label">RIVER BEND · 1.8 ACRES</span><h2>Soybean</h2></div><span class="field-condition condition-watch">Watch</span></div><div class="growth-track"><span>Growth stage</span><strong>Flowering</strong><div class="growth-bar"><i style="width:72%"></i></div></div><div class="field-facts"><div><span>Soil moisture</span><strong>28% <small>demo</small></strong></div><div><span>Soil pH</span><strong>6.1 <small>demo</small></strong></div><div><span>Field health</span><strong>76 / 100</strong></div></div><button class="field-card-action" data-action="field-detail" data-name="River Bend">View field notes <span>→</span></button></div></article>
+            <article class="field-detail-card"><div class="field-card-art art-orchard"><span class="art-tag">FIELD 03</span><span class="art-sun">☼</span><div class="art-crop-row"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="field-card-body"><div class="field-card-head"><div><span class="field-card-label">ORCHARD EDGE · 1.6 ACRES</span><h2>Tomato</h2></div><span class="field-condition condition-good">Good</span></div><div class="growth-track"><span>Growth stage</span><strong>Fruit setting</strong><div class="growth-bar"><i style="width:64%"></i></div></div><div class="field-facts"><div><span>Soil moisture</span><strong>40% <small>demo</small></strong></div><div><span>Soil pH</span><strong>6.3 <small>demo</small></strong></div><div><span>Field health</span><strong>83 / 100</strong></div></div><button class="field-card-action" data-action="field-detail" data-name="Orchard Edge">View field notes <span>→</span></button></div></article>
+          </div>
+        </section>
+
+        <section class="view scanner-view" id="view-scanner" data-view="scanner">
+          <div class="welcome-row compact-welcome"><div><div class="eyebrow"><span class="eyebrow-line"></span> CROP HEALTH TOOL</div><h1>Take a closer <em>look.</em></h1><p class="page-subtitle">Try the crop-scan experience with a sample image or one from your device.</p></div><span class="outline-chip"><span class="demo-ring">✳</span> DEMO SCANNER</span></div>
+          <div class="demo-banner"><span class="banner-icon">i</span><span><strong>Illustrative scan only</strong> &nbsp;This prototype does not run a disease-detection model. Results are simulated and are not an agronomic diagnosis.</span></div>
+          <div class="scanner-layout">
+            <section class="panel scanner-upload-panel">
+              <div class="panel-heading"><div><div class="section-kicker">STEP 1 · ADD A CROP PHOTO</div><h2>Choose an image</h2></div><span class="step-count">01 <i>/ 02</i></span></div>
+              <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose a crop photo">
+                <img class="scan-preview" id="scanPreview" src="./assets/tomato-leaf-sample.svg" alt="Illustration of a tomato leaf with example spots, for the simulated scanner demonstration" />
+                <div class="image-overlay"><span class="image-overlay-tag">SAMPLE IMAGE</span><button class="replace-image" id="replaceImage">Replace photo <span>↗</span></button></div>
+                <div class="image-loading" id="imageLoading"><span class="spinner small-spinner"></span><span>Preparing sample illustration…</span></div>
+              </div>
+              <div class="upload-actions"><button class="button button-outline" id="uploadButton"><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 15v4a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-4"/></svg> Upload photo</button><button class="button button-quiet" id="sampleButton">Use sample illustration</button><input type="file" id="fileInput" accept="image/*" hidden /></div>
+              <div class="photo-tip"><span class="tip-icon">✳</span><span><strong>For a useful photo</strong><small>Keep one leaf in focus and use natural light. This is a software demo, so no image leaves your browser.</small></span></div>
+              <button class="button button-primary scan-button" id="scanButton"><span class="scan-button-label">Run demo scan</span><span class="button-arrow">→</span></button>
+            </section>
+            <section class="panel scan-results-panel" id="scanResultsPanel">
+              <div class="panel-heading"><div><div class="section-kicker">STEP 2 · REVIEW THE DEMO OUTPUT</div><h2>Scan preview</h2></div><span class="result-state" id="resultState"><i></i> WAITING</span></div>
+              <div class="scan-empty" id="scanEmpty"><div class="scan-orbit"><span class="orbit-leaf">✳</span><i class="orbit-ring ring-one"></i><i class="orbit-ring ring-two"></i></div><h3>Your demo result will appear here.</h3><p>Run a scan to see an example of how a future crop-health tool could present a finding.</p><div class="scan-empty-foot"><span>SIMULATED RESULT</span><span>NO AI MODEL CONNECTED</span></div></div>
+              <div class="scan-progress" id="scanProgress" hidden><div class="progress-visual"><div class="progress-image-wrap"><img id="progressImage" src="" alt="" /><span class="scan-beam"></span></div><span class="progress-orbit orbit-a"></span><span class="progress-orbit orbit-b"></span></div><strong>Preparing your demo result…</strong><small>Showing a simulated workflow, not analyzing your image.</small><div class="progress-track"><span></span></div></div>
+              <div class="scan-result" id="scanResult" hidden>
+                <div class="result-banner"><span class="result-check">✳</span><span><strong>Demo pattern: leaf spot-like marks</strong><small>Example output · simulated, not a diagnosis</small></span><span class="result-demo-badge">DEMO</span></div>
+                <div class="result-image-row"><img id="resultImage" src="" alt="Selected leaf photo used for the demo scan" /><div><span class="result-label">OBSERVATION</span><strong>Small brown spots on the leaf</strong><p>This example describes a possible visual pattern only. A real assessment would need a validated model and more context.</p></div></div>
+                <div class="result-advice"><div class="advice-icon">↗</div><div><span class="result-label">A CAUTIOUS NEXT STEP</span><p>Photograph a few more leaves in clear light. Compare symptoms with trusted local extension guidance before taking action.</p></div></div>
+                <div class="result-disclaimer"><span>i</span> Do not use this simulated output to choose or apply a treatment.</div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="view-weather" data-view="weather">
+          <div class="welcome-row compact-welcome"><div><div class="eyebrow"><span class="eyebrow-line"></span> WEATHER INTELLIGENCE</div><h1>Look ahead, <em>plan well.</em></h1><p class="page-subtitle">A sample forecast view for the AgroMind software prototype.</p></div><span class="outline-chip"><span class="pulse-dot"></span> SIMULATED FORECAST</span></div>
+          <div class="demo-banner"><span class="banner-icon">i</span><span><strong>Sample weather values</strong> &nbsp;This forecast is illustrative and is not connected to a live weather service.</span></div>
+          <div class="weather-hero panel"><div class="weather-hero-copy"><span class="section-kicker">TODAY · DEMO LOCATION</span><div class="weather-hero-temp">28<span>°C</span></div><h2>Partly sunny</h2><p>Sample values for the dashboard demo. Always use a trusted forecast for real farm decisions.</p></div><div class="weather-hero-art"><span class="sun-disc large-sun"></span><span class="cloud-shape large-cloud"></span><span class="weather-ground"></span></div><div class="weather-hero-stats"><div><span>HUMIDITY</span><strong>62%</strong><small>sample</small></div><div><span>WIND</span><strong>11 km/h</strong><small>sample</small></div><div><span>RAIN CHANCE</span><strong>20%</strong><small>sample</small></div><div><span>UV INDEX</span><strong>Moderate</strong><small>sample</small></div></div></div>
+          <section class="panel forecast-panel"><div class="panel-heading"><div><div class="section-kicker">FIVE-DAY OUTLOOK</div><h2>Plan the week</h2></div><span class="outline-chip">SAMPLE FORECAST</span></div><div class="forecast-days"><article><span>FRI</span><div class="forecast-symbol sunny-symbol">☼</div><strong>29°</strong><small>Mostly sunny</small><i>10% rain</i></article><article><span>SAT</span><div class="forecast-symbol partly-symbol">◒</div><strong>27°</strong><small>Cloud breaks</small><i>20% rain</i></article><article class="rainy-day"><span>SUN</span><div class="forecast-symbol rain-symbol">⌁</div><strong>25°</strong><small>Light showers</small><i>55% rain</i></article><article><span>MON</span><div class="forecast-symbol sunny-symbol">☼</div><strong>28°</strong><small>Mostly sunny</small><i>10% rain</i></article><article><span>TUE</span><div class="forecast-symbol partly-symbol">◒</div><strong>26°</strong><small>Partly cloudy</small><i>25% rain</i></article></div></section>
+          <div class="weather-guidance"><span class="guidance-mark">✳</span><div><strong>Use local conditions to guide decisions.</strong><p>This prototype does not provide location-specific forecasts. Check local weather and field conditions before irrigation, spraying, or other farm work.</p></div></div>
+        </section>
+
+        <section class="view" id="view-roadmap" data-view="roadmap">
+          <div class="welcome-row compact-welcome"><div><div class="eyebrow"><span class="eyebrow-line"></span> WHAT COMES NEXT</div><h1>A smarter farm, <em>step by step.</em></h1><p class="page-subtitle">The current build is software-only. These hardware ideas are future concepts.</p></div><span class="outline-chip">VISION · NOT BUILT</span></div>
+          <div class="demo-banner"><span class="banner-icon">i</span><span><strong>Roadmap only</strong> &nbsp;No physical devices, sensor connections, or irrigation controls are implemented in this prototype.</span></div>
+          <div class="roadmap-layout"><div class="roadmap-intro panel"><div class="roadmap-icon">✳</div><span class="section-kicker">AGROMIND AI · FUTURE VISION</span><h2>From field signals to better decisions.</h2><p>AgroMind’s long-term concept connects affordable field sensing with clear software tools, so farmers can see conditions and decide what to check next.</p><div class="roadmap-line"><span>SOFTWARE PROTOTYPE</span><i></i><span>FUTURE CONNECTED FARM</span></div></div><div class="roadmap-items"><article class="roadmap-card"><div class="roadmap-number">01</div><div class="roadmap-item-icon icon-sensor">⌁</div><div><span class="roadmap-status">FUTURE CONCEPT</span><h3>Distributed sensor nodes</h3><p>Low-cost field nodes could collect soil moisture and local conditions for a connected dashboard.</p></div><span class="roadmap-arrow">↗</span></article><article class="roadmap-card"><div class="roadmap-number">02</div><div class="roadmap-item-icon icon-solar">☼</div><div><span class="roadmap-status">FUTURE CONCEPT</span><h3>Solar-powered field tower</h3><p>A central unit could relay data from multiple nodes where connectivity and power are limited.</p></div><span class="roadmap-arrow">↗</span></article><article class="roadmap-card"><div class="roadmap-number">03</div><div class="roadmap-item-icon icon-irrigation">↗</div><div><span class="roadmap-status">FUTURE CONCEPT</span><h3>Assisted irrigation</h3><p>Future recommendations could connect to irrigation controls, with farmer review and safeguards.</p></div><span class="roadmap-arrow">↗</span></article></div></div>
+          <section class="roadmap-foot panel"><span class="roadmap-foot-icon">i</span><div><strong>Current capabilities</strong><p>This demo includes a responsive dashboard, sample field and weather values, illustrative alerts, and a simulated crop-scan flow. It does not connect to sensors, weather providers, or farm equipment.</p></div></section>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close dialog">×</button><span class="modal-kicker">FIELD NOTE · SAMPLE DATA</span><h2 id="modalTitle">Field detail</h2><p id="modalBody">This is a demonstration field summary using simulated readings.</p><div class="modal-facts"><span>Soil readings <strong>Simulated</strong></span><span>Hardware status <strong>Not connected</strong></span></div><button class="button button-primary modal-ok" id="modalOk">Got it</button></div></div>
+  </body>
+</html>
